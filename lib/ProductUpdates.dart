@@ -1,9 +1,13 @@
+// ignore_for_file: file_names
+
 import 'package:flutter/material.dart';
 import 'package:firstproject/db/data_model.dart';
 import 'package:firstproject/db/db.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class ProductUpdates extends StatefulWidget {
+  const ProductUpdates({super.key});
+
   @override
   State<ProductUpdates> createState() => _ProductUpdatesState();
 }
@@ -36,7 +40,7 @@ class _ProductUpdatesState extends State<ProductUpdates> {
               shadows: [
                 Shadow(
                   color: Colors.black.withOpacity(0.3),
-                  offset: Offset(0, 2),
+                  offset: const Offset(0, 2),
                   blurRadius: 5,
                 ), 
               ],
@@ -60,7 +64,7 @@ class _ProductUpdatesState extends State<ProductUpdates> {
         itemBuilder: (context, index) {
           final product = stockout[index];
           return Padding(
-            padding: EdgeInsets.symmetric(vertical: 4.0, horizontal: 8.0),
+            padding: const EdgeInsets.symmetric(vertical: 4.0, horizontal: 8.0),
             child: Card(
               elevation: 3,
               shape: RoundedRectangleBorder(
@@ -69,13 +73,13 @@ class _ProductUpdatesState extends State<ProductUpdates> {
               child: ListTile(
                 title: Text(
                   product.productname,
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 20,
-                    color: const Color.fromARGB(255, 0, 0, 0),
+                    color: Color.fromARGB(255, 0, 0, 0),
                   ),
                 ),
-                subtitle: Text(
+                subtitle: const Text(
                   'Out of Stock',
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
@@ -91,7 +95,7 @@ class _ProductUpdatesState extends State<ProductUpdates> {
     } else {
       return Center(
         child: Container(
-          padding: EdgeInsets.all(20.0),
+          padding: const EdgeInsets.all(20.0),
           decoration: BoxDecoration(
             color: Colors.blueGrey[100],
             borderRadius: BorderRadius.circular(10.0),
@@ -100,19 +104,19 @@ class _ProductUpdatesState extends State<ProductUpdates> {
                 color: Colors.grey.withOpacity(0.5),
                 spreadRadius: 2,
                 blurRadius: 5,
-                offset: Offset(0, 3),
+                offset: const Offset(0, 3),
               ),
             ],
           ),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              Icon(
+              const Icon(
                 Icons.info_outline,
                 size: 50,
                 color: Colors.blue,
               ),
-              SizedBox(height: 10.0),
+              const SizedBox(height: 10.0),
               Text(
                 'No stockout products found.',
                 style: TextStyle(

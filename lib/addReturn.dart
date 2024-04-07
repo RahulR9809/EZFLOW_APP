@@ -1,3 +1,4 @@
+// ignore: file_names
 import 'package:firstproject/ReturnedDetails.dart';
 import 'package:firstproject/db/data_model.dart';
 import 'package:firstproject/db/db.dart';
@@ -27,7 +28,7 @@ class _AddReturnState extends State<AddReturn> {
   final _returnPrice = TextEditingController();
   List<Product> selectedProducts = [];
 
-  GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   @override
   void initState() {
@@ -78,7 +79,7 @@ class _AddReturnState extends State<AddReturn> {
                     hintText: 'Customer name',
                   ),
                 ),
-                SizedBox(height: 15),
+                const SizedBox(height: 15),
                 TextFormField(
                   readOnly: true,
                   autovalidateMode: AutovalidateMode.onUserInteraction,
@@ -98,7 +99,7 @@ class _AddReturnState extends State<AddReturn> {
                     hintText: 'Phone Number',
                   ),
                 ),
-                SizedBox(height: 15),
+                const SizedBox(height: 15),
                 TextFormField(
                   maxLines: null,
                   readOnly: true,
@@ -120,7 +121,7 @@ class _AddReturnState extends State<AddReturn> {
                     return null;
                   },
                 ),
-                SizedBox(height: 15),
+                const SizedBox(height: 15),
                 TextFormField(
                   controller: _returnedReason,
                   maxLines: null,
@@ -131,7 +132,7 @@ class _AddReturnState extends State<AddReturn> {
                     hintText: 'Reason for return',
                   ),
                 ),
-                SizedBox(height: 15),
+                const SizedBox(height: 15),
                 TextFormField(
                   controller: _returnPrice,
                   validator: (value) {
@@ -147,7 +148,7 @@ class _AddReturnState extends State<AddReturn> {
                     hintText: 'Return price',
                   ),
                 ),
-                SizedBox(height: 15),
+                const SizedBox(height: 15),
                 ElevatedButton(
                   onPressed: () async {
                     if (_formKey.currentState!.validate()) {
@@ -168,12 +169,13 @@ class _AddReturnState extends State<AddReturn> {
                         _returnedReason.clear();
                       });
                       Navigator.pushReplacement(
+                        // ignore: use_build_context_synchronously
                         context,
-                        MaterialPageRoute(builder: (context) => ReturnPage()),
+                        MaterialPageRoute(builder: (context) => const ReturnPage()),
                       );
                     }
                   },
-                  child: Text('Return'),
+                  child: const Text('Return'),
                 ),
               ],
             ),
@@ -280,13 +282,14 @@ class _ProductSelectionScreenState extends State<ProductSelectionScreen> {
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(20),
       ),
+      // ignore: sized_box_for_whitespace
       child: Container(
         height: MediaQuery.of(context).size.height * 0.58,
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
             Padding(
-              padding: EdgeInsets.all(8.0),
+              padding: const EdgeInsets.all(8.0),
               child: TextField(
                 decoration: InputDecoration(
                   hintText: 'Search Product',
@@ -297,7 +300,7 @@ class _ProductSelectionScreenState extends State<ProductSelectionScreen> {
                 onChanged: filterProducts,
               ),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             Expanded(
               child: ListView.builder(
                 itemCount: displayedProducts.length,
@@ -315,7 +318,7 @@ class _ProductSelectionScreenState extends State<ProductSelectionScreen> {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               IconButton(
-                                icon: Icon(Icons.remove),
+                                icon: const Icon(Icons.remove),
                                 onPressed: () {
                                   setState(() {
                                     if (selectedCounts[index] > 0) {
@@ -326,7 +329,7 @@ class _ProductSelectionScreenState extends State<ProductSelectionScreen> {
                               ),
                               Text(selectedCounts[index].toString()), // Display count here
                               IconButton(
-                                icon: Icon(Icons.add),
+                                icon: const Icon(Icons.add),
                                 onPressed: () {
                                   setState(() {
                                     selectedCounts[index]++;
@@ -357,9 +360,9 @@ class _ProductSelectionScreenState extends State<ProductSelectionScreen> {
                       }
                       Navigator.pop(context, selectedProducts);
                     },
-                    child: Text('Add'),
+                    child: const Text('Add'),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 50,
                   ),
                   ElevatedButton(
@@ -368,7 +371,7 @@ class _ProductSelectionScreenState extends State<ProductSelectionScreen> {
                         selectedCounts = List.generate(allProducts.length, (_) => 0);
                       });
                     },
-                    child: Text('Clear'),
+                    child: const Text('Clear'),
                   ),
                 ],
               ),

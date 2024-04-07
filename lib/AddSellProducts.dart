@@ -1,3 +1,6 @@
+// ignore: file_names
+// ignore_for_file: sort_child_properties_last
+
 import 'package:firstproject/sellDetails.dart';
 import 'package:flutter/material.dart';
 import 'package:firstproject/db/data_model.dart';
@@ -6,6 +9,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:hive/hive.dart';
 
 class SellProducts extends StatefulWidget {
+  // ignore: use_key_in_widget_constructors
   const SellProducts({
     Key? key,
   });
@@ -97,7 +101,7 @@ class _SellProductsState extends State<SellProducts> {
                         return null;
                       },
                     ),
-                    SizedBox(height: 20),
+                    const SizedBox(height: 20),
                     TextFormField(
                       autovalidateMode: AutovalidateMode.onUserInteraction,
                       controller: _sellPhone,
@@ -117,7 +121,7 @@ class _SellProductsState extends State<SellProducts> {
                         return null;
                       },
                     ),
-                    SizedBox(height: 20),
+                    const SizedBox(height: 20),
               TextFormField(
   maxLines: null,
   autovalidateMode: AutovalidateMode.onUserInteraction,
@@ -130,7 +134,7 @@ class _SellProductsState extends State<SellProducts> {
       onPressed: () {
         _navigateAndDisplaySelection(context);
       },
-      icon: Icon(Icons.arrow_drop_down),
+      icon: const Icon(Icons.arrow_drop_down),
     ),
   ),
   readOnly: true,
@@ -143,7 +147,7 @@ class _SellProductsState extends State<SellProducts> {
   },
 ),
 
-                    SizedBox(height: 20),
+                    const SizedBox(height: 20),
                     TextFormField(
                       keyboardType: TextInputType.number,
                       controller: _selldiscount,
@@ -168,7 +172,7 @@ class _SellProductsState extends State<SellProducts> {
                         });
                       },
                     ),
-                    SizedBox(height: 20),
+                    const SizedBox(height: 20),
                     TextFormField(
                       readOnly: true,
                       controller: _sellPrice,
@@ -185,7 +189,7 @@ class _SellProductsState extends State<SellProducts> {
                         return null;
                       },
                     ),
-                    SizedBox(height: 20),
+                    const SizedBox(height: 20),
                     ElevatedButton(
                       onPressed: () async {
                         if (_formKey.currentState!.validate()) {
@@ -213,11 +217,13 @@ class _SellProductsState extends State<SellProducts> {
 
                             setState(() {
                               totalSoldCount += selectedProducts.length;
+                              // ignore: avoid_print
                               print('Total Sold Count: $totalSoldCount');
                             });
 
                             updateTotalSoldCount(selectedProducts.length);
                             Navigator.pushReplacement(
+                                // ignore: use_build_context_synchronously
                                 context,
                                 MaterialPageRoute(
                                     builder: (context) => SellDetails(selectedProducts:selectedProducts,)));
@@ -229,11 +235,25 @@ class _SellProductsState extends State<SellProducts> {
                               _sellPrice.clear();
                             });
                           } catch (e) {
+                            // ignore: avoid_print
                             print('An error occurred: $e');
                           }
                         }
                       },
-                      child: Text('Sell'),
+                     child: const Text(
+                          'Sell',
+                          style: TextStyle(color: Color.fromARGB(255, 255, 255, 255)),
+                        ),
+                        style: ButtonStyle(
+                          backgroundColor:
+                              MaterialStateProperty.all<Color>(Colors.blue),
+                          shape:
+                              MaterialStateProperty.all<RoundedRectangleBorder>(
+                            RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                          ),
+                        ),
                     )
                   ],
                 ),
@@ -256,6 +276,7 @@ class _SellProductsState extends State<SellProducts> {
       final productBox = await Hive.openBox<Product>('product');
       await productBox.put(product.id, product);
     } catch (e) {
+      // ignore: avoid_print
       print('Error updating product: $e');
     }
   }
@@ -294,6 +315,7 @@ class _SellProductsState extends State<SellProducts> {
               count;
           String formattedProduct =
               '$productName = $count * ${selectedProducts.firstWhere((product) => product.productname == productName).productmrp} = $productPrice';
+          // ignore: prefer_interpolation_to_compose_strings
           _sellBook.text += formattedProduct + '\n';
         }
 
@@ -303,6 +325,7 @@ class _SellProductsState extends State<SellProducts> {
   }
 }
 
+// ignore: use_key_in_widget_constructors
 class ProductSelectionScreen extends StatefulWidget {
   @override
   State<ProductSelectionScreen> createState() => _ProductSelectionScreenState();
@@ -356,7 +379,7 @@ class _ProductSelectionScreenState extends State<ProductSelectionScreen> {
     builder: (BuildContext context) {
       int newCount = count;
       return AlertDialog(
-        title: Text('Enter Count'),
+        title: const Text('Enter Count'),
         content: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
@@ -379,7 +402,7 @@ class _ProductSelectionScreenState extends State<ProductSelectionScreen> {
               });
               Navigator.of(context).pop();
             },
-            child: Text('Add'),
+            child: const Text('Add'),
           ),
         ],
       );
@@ -396,13 +419,14 @@ class _ProductSelectionScreenState extends State<ProductSelectionScreen> {
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(20),
       ),
+      // ignore: sized_box_for_whitespace
       child: Container(
         height: MediaQuery.of(context).size.height * 0.58,
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
             Padding(
-              padding: EdgeInsets.all(8.0),
+              padding: const EdgeInsets.all(8.0),
               child: TextField(
                 decoration: InputDecoration(
                   hintText: 'Search Product',
@@ -413,7 +437,7 @@ class _ProductSelectionScreenState extends State<ProductSelectionScreen> {
                 onChanged: filterProducts,
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             Expanded(
@@ -456,9 +480,9 @@ class _ProductSelectionScreenState extends State<ProductSelectionScreen> {
                       }
                       Navigator.pop(context, selectedProducts);
                     },
-                    child: Text('Add'),
+                    child: const Text('Add'),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 50,
                   ),
                   ElevatedButton(
@@ -469,7 +493,7 @@ class _ProductSelectionScreenState extends State<ProductSelectionScreen> {
                             List.generate(allProducts.length, (_) => 0);
                       });
                     },
-                    child: Text('Clear'),
+                    child: const Text('Clear'),
                   ),
                 ],
               ),

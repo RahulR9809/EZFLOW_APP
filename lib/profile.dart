@@ -1,4 +1,4 @@
-// ignore_for_file: invalid_use_of_visible_for_testing_member, invalid_use_of_protected_member, empty_catches, sort_child_properties_last, unused_field, prefer_const_constructors_in_immutables
+// ignore_for_file: invalid_use_of_visible_for_testing_member, invalid_use_of_protected_member, empty_catches, sort_child_properties_last, unused_field, prefer_const_constructors_in_immutables, sized_box_for_whitespace, avoid_print
 
 import 'dart:io';
 import 'package:path_provider/path_provider.dart' as path_provider;
@@ -80,10 +80,10 @@ class _ProfileState extends State<Profile> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text('Edit Username'),
+          title: const Text('Edit Username'),
           content: TextField(
             controller: usernameController,
-            decoration: InputDecoration(
+            decoration: const InputDecoration(
               hintText: 'Enter new username',
             ),
           ),
@@ -95,7 +95,7 @@ class _ProfileState extends State<Profile> {
                   Navigator.of(context).pop();
                 }
               },
-              child: Text('Save'),
+              child: const Text('Save'),
             ),
           ],
         );
@@ -117,7 +117,7 @@ class _ProfileState extends State<Profile> {
               shadows: [
                 Shadow(
                   color: Colors.black.withOpacity(0.3),
-                  offset: Offset(0, 2),
+                  offset: const Offset(0, 2),
                   blurRadius: 5,
                 ),
               ],
@@ -133,7 +133,7 @@ class _ProfileState extends State<Profile> {
                 onPressed: () {
                   Scaffold.of(context).openDrawer();
                 },
-                icon: Icon(Icons.settings),
+                icon: const Icon(Icons.settings),
               );
             },
           ),
@@ -152,7 +152,7 @@ class _ProfileState extends State<Profile> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text(
+                      const Text(
                         'EZFLOW',
                         style: TextStyle(
                           color: Colors.white,
@@ -163,7 +163,7 @@ class _ProfileState extends State<Profile> {
                           onTap: () {
                             exit(0);
                           },
-                          child: Icon(
+                          child: const Icon(
                             Icons.exit_to_app,
                             color: Colors.white,
                           ))
@@ -173,37 +173,37 @@ class _ProfileState extends State<Profile> {
               ),
             ),
             ListTile(
-              leading: Icon(Icons.article_outlined),
-              title: Text('Terms of Use'),
+              leading: const Icon(Icons.article_outlined),
+              title: const Text('Terms of Use'),
               onTap: () {
                 Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => TermsOfUse()));
+                    MaterialPageRoute(builder: (context) => const TermsOfUse()));
               },
             ),
-            Divider(),
+            const Divider(),
             ListTile(
-              leading: Icon(Icons.info_outline),
-              title: Text('About'),
+              leading: const Icon(Icons.info_outline),
+              title: const Text('About'),
               onTap: () {
                 Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => AboutApp()));
+                    MaterialPageRoute(builder: (context) => const AboutApp()));
               },
             ),
-            Divider(),
+            const Divider(),
             ListTile(
-              leading: Icon(Icons.share),
-              title: Text('Share App'),
+              leading: const Icon(Icons.share),
+              title: const Text('Share App'),
               onTap: () {},
             ),
             Padding(
               padding: const EdgeInsets.only(top: 20),
               child: ListTile(
-                title: Center(
+                title: const Center(
                     child: Text(
                   'Version 1',
                   style: TextStyle(
                       fontSize: 13,
-                      color: const Color.fromARGB(255, 119, 119, 119)),
+                      color: Color.fromARGB(255, 119, 119, 119)),
                 )),
                 onTap: () {},
               ),
@@ -230,7 +230,7 @@ class _ProfileState extends State<Profile> {
                                 ? FileImage(_imageFile!)
                                 : null,
                             child: _imageFile == null
-                                ? Icon(Icons.person,
+                                ? const Icon(Icons.person,
                                     size: 120,
                                     color: Color.fromARGB(255, 155, 173, 235))
                                 : null,
@@ -240,14 +240,14 @@ class _ProfileState extends State<Profile> {
                           bottom: 0,
                           right: 0,
                           child: Container(
-                            padding: EdgeInsets.all(4),
-                            decoration: BoxDecoration(
+                            padding: const EdgeInsets.all(4),
+                            decoration: const BoxDecoration(
                               shape: BoxShape.circle,
                               color: Color.fromARGB(255, 105, 102, 123),
                             ),
                             child: GestureDetector(
                               onTap: _pickImage,
-                              child: Icon(
+                              child: const Icon(
                                 Icons.edit,
                                 color: Colors.white,
                               ),
@@ -256,7 +256,7 @@ class _ProfileState extends State<Profile> {
                         ),
                       ],
                     ),
-                    SizedBox(height: 10),
+                    const SizedBox(height: 10),
                     _isUserBoxInitialized
                         ? ValueListenableBuilder(
                             valueListenable: _userBox.listenable(),
@@ -267,22 +267,22 @@ class _ProfileState extends State<Profile> {
                                 onTap: _editUsername,
                                 child: Text(
                                   username,
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                     fontSize: 18,
                                     fontWeight: FontWeight.bold,
-                                    color: const Color.fromARGB(255, 0, 0, 0),
+                                    color: Color.fromARGB(255, 0, 0, 0),
                                   ),
                                 ),
                               );
                             },
                           )
-                        : SizedBox.shrink(),
+                        : const SizedBox.shrink(),
             SizedBox(
               height: MediaQuery.of(context).size.height * 0.06, // Adjust the height as needed
             ),
            const Divider(), 
             ListTile(
-              leading: Icon(Icons.category),
+              leading: const Icon(Icons.category),
               title: Text(
                 'Add Category',
                 style: GoogleFonts.alegreyaSc(
@@ -294,7 +294,7 @@ class _ProfileState extends State<Profile> {
             ), 
             const Divider(),
             ListTile(
-              leading: Icon(Icons.shopping_cart),
+              leading: const Icon(Icons.shopping_cart),
               title: Text(
                 'Sell Products',
                 style: GoogleFonts.alegreyaSc(
@@ -302,12 +302,12 @@ class _ProfileState extends State<Profile> {
               ),
               onTap: () {
                 Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => SellProducts()));
+                    MaterialPageRoute(builder: (context) => const SellProducts()));
               },
             ),
             const Divider(),
             ListTile(
-               leading: Icon(Icons.privacy_tip),
+               leading: const Icon(Icons.privacy_tip),
               title: Text(
                 'Privacy Policy',
                 style: GoogleFonts.alegreyaSc(
@@ -315,7 +315,7 @@ class _ProfileState extends State<Profile> {
               ),
               onTap: () {
                 Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => PrivacyPolicy()));
+                    MaterialPageRoute(builder: (context) => const PrivacyPolicy()));
               },
             ),
           ],
@@ -374,7 +374,7 @@ class _ProfileState extends State<Profile> {
                                   ),
                                 ),
                               if (_imageValidationError)
-                                Positioned(
+                                const Positioned(
                                   bottom: 0,
                                   child: Text(
                                     'Please add an image',
@@ -435,7 +435,7 @@ class _ProfileState extends State<Profile> {
 
                           Navigator.of(context).pop();
                           ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(
+                            const SnackBar(
                               backgroundColor: Colors.green,
                               content: Text('Category successfully!'),
                             ),

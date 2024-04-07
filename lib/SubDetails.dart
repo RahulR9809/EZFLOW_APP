@@ -1,7 +1,8 @@
+// ignore_for_file: file_names, unnecessary_string_escapes
+
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:firstproject/db/data_model.dart';
-import 'package:flutter/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class SubDetails extends StatefulWidget {
@@ -54,7 +55,7 @@ class _SubDetailsState extends State<SubDetails> {
                         color: const Color.fromARGB(255, 32, 32, 32).withOpacity(0.8),
                         spreadRadius: 5,
                         blurRadius: 7,
-                        offset: Offset(0, 3),
+                        offset: const Offset(0, 3),
                       ),
                     ],
                   ),
@@ -72,17 +73,17 @@ class _SubDetailsState extends State<SubDetails> {
                   right: 0,
                   child: Container(
                     
-                    padding: EdgeInsets.all(8),
+                    padding: const EdgeInsets.all(8),
                     decoration: BoxDecoration(
-                      borderRadius: BorderRadius.only(
+                      borderRadius: const BorderRadius.only(
                         bottomLeft: Radius.circular(10),
                         bottomRight: Radius.circular(10),
                       ),
-                      color: Color.fromARGB(255, 21, 20, 20).withOpacity(0.7),
+                      color: const Color.fromARGB(255, 21, 20, 20).withOpacity(0.7),
                     ),
                     child: Text(
                       'Volume: ${widget.product.productVolume}',
-                      style: TextStyle(
+                      style: const TextStyle(
                         color: Colors.white,
                         fontSize: 16,
                         fontWeight: FontWeight.bold,
@@ -93,24 +94,24 @@ class _SubDetailsState extends State<SubDetails> {
                 ),
               ],
             ),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             // Product Details Container
             Container(
              height: MediaQuery.of(context).size.height*0.45,  
              width: MediaQuery.of(context).size.width*0.95,
               // width: 500,
-              padding: EdgeInsets.all(16),
+              padding: const EdgeInsets.all(16),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10),
                 boxShadow: [
                   BoxShadow(
-                    color: Color.fromARGB(255, 73, 73, 73).withOpacity(0.5),
+                    color: const Color.fromARGB(255, 73, 73, 73).withOpacity(0.5),
                     spreadRadius: 2,
                     blurRadius: 5,
-                    offset: Offset(0, 3),
+                    offset: const Offset(0, 3),
                   ),
                 ], 
-                color: Color.fromARGB(255, 48, 48, 48),
+                color: const Color.fromARGB(255, 48, 48, 48),
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -138,16 +139,16 @@ class _SubDetailsState extends State<SubDetails> {
         children: [
           Text(
             title,
-            style: TextStyle(
+            style: const TextStyle(
               fontSize: 20,
               fontWeight: FontWeight.bold,
               color: Color.fromARGB(255, 255, 255, 255),
             ),
           ),
-          SizedBox(height: 2),
+          const SizedBox(height: 2),
           Text(
             value,
-            style: TextStyle(
+            style: const TextStyle(
               color: Colors.white,
               fontWeight: FontWeight.w500,
               

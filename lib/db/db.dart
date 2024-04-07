@@ -1,7 +1,6 @@
 // ignore_for_file: invalid_use_of_protected_member, invalid_use_of_visible_for_testing_member, non_constant_identifier_names, no_leading_underscores_for_local_identifiers, avoid_print
 
 import 'package:firstproject/db/data_model.dart';
-import 'package:firstproject/profile.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';

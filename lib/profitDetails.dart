@@ -1,3 +1,5 @@
+// ignore_for_file: file_names
+
 import 'package:firstproject/db/data_model.dart';
 import 'package:firstproject/sellDetails.dart';
 import 'package:fl_chart/fl_chart.dart';
@@ -38,12 +40,12 @@ class _ProfitDetailsState extends State<ProfitDetails> {
     for (int i = 0; i < 7; i++) {
       double totalProfit = 0.0;
       for (SellProduct product in _sellProducts) {
-        if (product.sellDate!.isAfter(currentDate.subtract(Duration(days: 6)))) {
+        if (product.sellDate!.isAfter(currentDate.subtract(const Duration(days: 6)))) {
           totalProfit += double.parse(product.sellPrice);
         }
       }
       spots.add(FlSpot(i.toDouble(), totalProfit));
-      currentDate = currentDate.subtract(Duration(days: 1));
+      currentDate = currentDate.subtract(const Duration(days: 1));
     }
     return spots.reversed.toList();
   }
@@ -63,7 +65,7 @@ class _ProfitDetailsState extends State<ProfitDetails> {
       }
       spots.add(FlSpot(i.toDouble(), totalProfit));
       totalProfit = 0.0; 
-      currentDate = currentDate.subtract(Duration(days: 1));
+      currentDate = currentDate.subtract(const Duration(days: 1));
     }
     return spots.reversed.toList();
   }
@@ -98,7 +100,7 @@ class _ProfitDetailsState extends State<ProfitDetails> {
         future: _sellProductsFuture,
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return Center(
+            return const Center(
               child: CircularProgressIndicator(),
             );
           } else if (snapshot.hasError) {
@@ -109,7 +111,7 @@ class _ProfitDetailsState extends State<ProfitDetails> {
             _sellProducts = snapshot.data!.values.toList();
             List<SellProduct> filteredSellProducts = getFilteredSellProducts();
             return filteredSellProducts.isEmpty
-                ? Center(
+                ? const Center(
                     child: Text(
                       'No recent sales found.',
                       style: TextStyle(fontSize: 16),
@@ -123,7 +125,7 @@ class _ProfitDetailsState extends State<ProfitDetails> {
                           padding: const EdgeInsets.all(8.0),
                           child: LineChart(
                             LineChartData(
-                              gridData: FlGridData(
+                              gridData: const FlGridData(
                                 show: false,
                               ),
                               borderData: FlBorderData(
@@ -145,7 +147,7 @@ class _ProfitDetailsState extends State<ProfitDetails> {
                                     show: true,
                                     color: Colors.blue.withOpacity(0.3),
                                   ),
-                                  dotData: FlDotData(show: false),
+                                  dotData: const FlDotData(show: false),
                                 ),
                                 LineChartBarData(
                                   spots: getMonthlyProfitData(),
@@ -163,13 +165,13 @@ class _ProfitDetailsState extends State<ProfitDetails> {
                           ),
                         ),
                       ),
-                      SizedBox(height: 16),
+                      const SizedBox(height: 16),
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 16.0),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Text(
+                            const Text(
                               'Recent Sales',
                               style: TextStyle(
                                 fontSize: 20,
@@ -178,7 +180,7 @@ class _ProfitDetailsState extends State<ProfitDetails> {
                             ),
                             DropdownButton<int>(
                               value: _selectedFilterIndex,
-                              items: [
+                              items: const [
                                 DropdownMenuItem(
                                   value: 0,
                                   child: Text('Last 7 days'),
@@ -201,10 +203,10 @@ class _ProfitDetailsState extends State<ProfitDetails> {
                           ],
                         ),
                       ),
-                      SizedBox(height: 8),
+                      const SizedBox(height: 8),
                       ListView.builder(
                         shrinkWrap: true,
-                        physics: NeverScrollableScrollPhysics(),
+                        physics: const NeverScrollableScrollPhysics(),
                         itemCount: filteredSellProducts.length,
                         itemBuilder: (context, index) {
                           final sellProduct = filteredSellProducts.reversed.toList()[index];
@@ -214,13 +216,13 @@ class _ProfitDetailsState extends State<ProfitDetails> {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => SellDetails(selectedProducts: [],), // Pass appropriate selected products here
+                                  builder: (context) => const SellDetails(selectedProducts: [],), // Pass appropriate selected products here
                                 ),
                               );
                             },
                             child: Card(
                               elevation: 2,
-                              margin: EdgeInsets.symmetric(vertical: 4, horizontal: 16),
+                              margin: const EdgeInsets.symmetric(vertical: 4, horizontal: 16),
                               child: ListTile(
                                 title: Text(
                                   sellProduct.sellName,

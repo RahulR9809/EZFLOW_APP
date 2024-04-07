@@ -1,3 +1,6 @@
+// ignore_for_file: file_names
+
+import 'package:firstproject/HomePage.dart';
 import 'package:flutter/material.dart';
 import 'package:firstproject/db/db.dart'; // Assuming this is where getReturn() is defined
 import 'package:firstproject/db/data_model.dart';
@@ -25,10 +28,14 @@ class _ReturnPageState extends State<ReturnPage> {
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.primaryContainer,
       appBar: AppBar(
-       
+       leading: GestureDetector(
+        onTap: () {
+          Navigator.push(context, MaterialPageRoute(builder: (context)=>const HomePage()));
+        },
+        child: const Icon(Icons.arrow_back)),
         backgroundColor: Theme.of(context).colorScheme.primaryContainer,
         centerTitle: true,
-        title: Text(
+        title: const Text(
           'Returned',
           style: TextStyle(
             fontSize: 25,
@@ -37,7 +44,7 @@ class _ReturnPageState extends State<ReturnPage> {
         ),
         actions: [
           IconButton(
-            icon: Icon(Icons.calendar_today),
+            icon: const Icon(Icons.calendar_today),
             onPressed: () {
               _selectDate(context);
             },
@@ -100,8 +107,8 @@ class _ReturnPageState extends State<ReturnPage> {
                     children:
                         displayedReturnProducts.reversed.map((returnProduct) {
                       return Container(
-                        margin: EdgeInsets.all(10),
-                        padding: EdgeInsets.all(10),
+                        margin: const EdgeInsets.all(10),
+                        padding: const EdgeInsets.all(10),
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(10),
                           color: Colors.black,
@@ -110,7 +117,7 @@ class _ReturnPageState extends State<ReturnPage> {
                               color: Colors.grey.withOpacity(0.5),
                               spreadRadius: 2,
                               blurRadius: 5,
-                              offset: Offset(0, 3),
+                              offset: const Offset(0, 3),
                             ),
                           ],
                         ),
@@ -132,13 +139,13 @@ class _ReturnPageState extends State<ReturnPage> {
                                       color: Colors.white,
                                     ),
                                   ),
-                                  SizedBox(width: 15),
+                                  const SizedBox(width: 15),
                                   Text(
                                     returnProduct.returnDate != null
                                         ? DateFormat('dd/MM/yyyy \n hh:mm:ss a')
                                             .format(returnProduct.returnDate!)
                                         : 'N/A',
-                                    style: TextStyle(
+                                    style: const TextStyle(
                                       fontWeight: FontWeight.bold,
                                       color: Colors.white,
                                       fontSize: 18,
@@ -147,13 +154,13 @@ class _ReturnPageState extends State<ReturnPage> {
                                 ],
                               ),
                             ),
-                            Divider(color: Colors.white),
+                            const Divider(color: Colors.white),
                             ListTile(
-                              contentPadding: EdgeInsets.symmetric(
+                              contentPadding: const EdgeInsets.symmetric(
                                   horizontal: 10, vertical: 5),
                               title: Text(
                                 'Name: ${returnProduct.returnName}',
-                                style: TextStyle(
+                                style: const TextStyle(
                                   fontWeight: FontWeight.bold,
                                   fontSize: 18,
                                   color: Colors.white,
@@ -164,29 +171,29 @@ class _ReturnPageState extends State<ReturnPage> {
                                 children: [
                                   Text(
                                     'Phone: ${returnProduct.returnPhone}',
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                   fontWeight: FontWeight.bold,
                                   fontSize: 18,
                                   color: Colors.white,
                                 ),
                                   ),
-                                  Divider(color: Colors.white),
-                                  SizedBox(
+                                  const Divider(color: Colors.white),
+                                  const SizedBox(
                                     height: 10,
                                   ),
                                   Text(
                                     'Reason: ${returnProduct.returnReason}',
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                   fontWeight: FontWeight.bold,
                                   fontSize: 18,
                                   color: Colors.white,
                                 ),
                                   ),
-                                  SizedBox(
+                                  const SizedBox(
                                     height: 10,
                                   ),
-                                  Divider(color: Colors.white),
-                                  Text(
+                                  const Divider(color: Colors.white),
+                                  const Text(
                                     'Product:',
                                    style: TextStyle(
                                   fontWeight: FontWeight.bold,
@@ -194,13 +201,13 @@ class _ReturnPageState extends State<ReturnPage> {
                                   color: Colors.white,
                                 ),
                                   ),
-                                  Divider(color: Colors.white),
-                                  SizedBox(
+                                  const Divider(color: Colors.white),
+                                  const SizedBox(
                                     height: 5,
                                   ),
                                   Text(
                                     ' ₹${returnProduct.returnProductName}',
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                   fontWeight: FontWeight.bold,
                                   fontSize: 18,
                                   color: Colors.white,
@@ -209,7 +216,7 @@ class _ReturnPageState extends State<ReturnPage> {
                                   Row(
                                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                     children: [
-                                      Text(
+                                      const Text(
                                         'Price:',
                                         style: TextStyle(
                                       fontWeight: FontWeight.bold,
@@ -219,7 +226,7 @@ class _ReturnPageState extends State<ReturnPage> {
                                       ),
                                         Text(
                                         ' ₹${returnProduct.returnPrice}',
-                                        style: TextStyle(
+                                        style: const TextStyle(
                                       fontWeight: FontWeight.bold,
                                       fontSize: 18,
                                       color: Colors.white,

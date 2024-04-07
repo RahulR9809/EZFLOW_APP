@@ -1,3 +1,5 @@
+// ignore_for_file: file_names, use_key_in_widget_constructors, prefer_const_constructors_in_immutables
+
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -63,7 +65,7 @@ class _EditCategoryState extends State<EditCategory> {
                     borderRadius: BorderRadius.circular(8.0),
                   ),
                 ),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 TextFormField(
                   controller: _nameController,
                   decoration: InputDecoration(
@@ -79,9 +81,9 @@ class _EditCategoryState extends State<EditCategory> {
                     return null;
                   },
                 ),
-                SizedBox(height: 16),
+                const SizedBox(height: 16),
                 if (_imageValidationError)
-                  Text(
+                  const Text(
                     'Please add an image',
                     style: TextStyle(
                       color: Colors.red,
@@ -91,7 +93,7 @@ class _EditCategoryState extends State<EditCategory> {
                   onPressed: () {
                     _updateCategory();
                   },
-                  child: Text('Update'),
+                  child: const Text('Update'),
                 ),
               ],
             ),

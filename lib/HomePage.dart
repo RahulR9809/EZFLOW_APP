@@ -1,3 +1,5 @@
+// ignore_for_file: file_names, library_private_types_in_public_api, prefer_const_constructors, avoid_print, unnecessary_brace_in_string_interps, prefer_const_literals_to_create_immutables
+
 import 'package:firstproject/ProductUpdates.dart';
 import 'package:firstproject/ReturnedDetails.dart';
 import 'package:firstproject/category.dart';
@@ -6,18 +8,18 @@ import 'package:firstproject/db/db.dart';
 import 'package:firstproject/profile.dart';
 import 'package:firstproject/profitDetails.dart';
 import 'package:firstproject/sellDetails.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
-import 'package:flutter/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatefulWidget {
+  const MyApp({super.key});
+
   @override
   State<MyApp> createState() => _MyAppState();
 }
@@ -91,9 +93,9 @@ class _HomePageState extends State<HomePage> {
 }
 // ignore: must_be_immutable
 class HomePageContent extends StatefulWidget {
-  int totalPrice = 0;
+  
 
-  HomePageContent({
+  const HomePageContent({
     Key? key,
   }) : super(key: key);
   @override
@@ -103,6 +105,7 @@ class HomePageContent extends StatefulWidget {
 int productCount = 0;
 
 class _HomePageContentState extends State<HomePageContent> {
+  int totalPrice=0;
   @override
   void initState() {
     super.initState();
@@ -119,6 +122,7 @@ class _HomePageContentState extends State<HomePageContent> {
     await getTodayProfit();
   }
 
+
 Future<double> getTodayProfit() async {
   try {
     final sellProductsBox = await Hive.openBox<SellProduct>('sell_products');
@@ -126,7 +130,6 @@ Future<double> getTodayProfit() async {
     double todayProfit = 0;
 
     DateTime today = DateTime.now();
-    // Calculate today's profit from sell products
     for (int i = 0; i < sellProductsBox.length; i++) {
       SellProduct product = sellProductsBox.getAt(i)!;
       DateTime productDate = product.sellDate ?? DateTime.now();
@@ -137,8 +140,7 @@ Future<double> getTodayProfit() async {
       }
     }
     
-    final returnbox = await Hive.box<ReturnProduct>('retunItems');
-    // Adjust today's profit based on return items
+    final returnbox = Hive.box<ReturnProduct>('retunItems');
     for (int j = 0; j < returnbox.length; j++) {
       ReturnProduct returnProduct = returnbox.getAt(j)!;
       if (returnProduct.returnDate?.year == today.year &&
@@ -149,7 +151,8 @@ Future<double> getTodayProfit() async {
     }
 
     print('Today\'s Profit: $todayProfit');
-    return todayProfit;
+  
+   return todayProfit;
   } catch (e) {
     print('Error fetching today\'s profit: $e');
     return 0;

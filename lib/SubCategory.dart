@@ -1,4 +1,6 @@
 // ignore: file_names
+// ignore_for_file: non_constant_identifier_names, avoid_print, use_build_context_synchronously, avoid_types_as_parameter_names, no_leading_underscores_for_local_identifiers
+
 import 'dart:async';
 import 'dart:io';
 import 'package:firstproject/AddSubCtgry.dart';
@@ -38,6 +40,7 @@ class _SubCategoryState extends State<SubCategory> {
   List<Product> allProduct = [];
   List<Product> filteredProduct = [];
 
+  @override
   void initState() {
     GetAllproducts();
     super.initState();
@@ -73,9 +76,9 @@ class _SubCategoryState extends State<SubCategory> {
       context: context,
       builder: ((BuildContext context) {
         return AlertDialog(
-          title: Center(child: Text('Confirm Deletion')),
-          content: Padding(
-            padding: const EdgeInsets.only(left: 30),
+          title: const Center(child: Text('Confirm Deletion')),
+          content: const Padding(
+            padding: EdgeInsets.only(left: 30),
             child: Text('Are you sure?'),
           ),
           actions: <Widget>[
@@ -87,7 +90,7 @@ class _SubCategoryState extends State<SubCategory> {
                     onPressed: () {
                       Navigator.of(context).pop();
                     },
-                    child: Text('Cancel'),
+                    child: const Text('Cancel'),
                   ),
                   TextButton(
                     onPressed: () async {
@@ -97,7 +100,7 @@ class _SubCategoryState extends State<SubCategory> {
 
                       setState(() {});
                     },
-                    child: Text('Confirm'),
+                    child: const Text('Confirm'),
                   )
                 ],
               ),
@@ -108,6 +111,7 @@ class _SubCategoryState extends State<SubCategory> {
     );
   }
 
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.primaryContainer,
@@ -123,9 +127,9 @@ class _SubCategoryState extends State<SubCategory> {
                     onPressed: () {
                       Navigator.pop(context);
                     },
-                    icon: Icon(Icons.arrow_back)),
-                Padding(
-                  padding: const EdgeInsets.only(left: 85),
+                    icon: const Icon(Icons.arrow_back)),
+                const Padding(
+                  padding: EdgeInsets.only(left: 85),
                   child: Text(
                     'Products',
                     style: TextStyle(
@@ -136,7 +140,7 @@ class _SubCategoryState extends State<SubCategory> {
                 ),
               ],
             ),
-            SizedBox(height: 15), // Add spacing as needed
+            const SizedBox(height: 15), // Add spacing as needed
             TextFormField(
               controller: _productSearch,
               decoration: InputDecoration(
@@ -150,7 +154,7 @@ class _SubCategoryState extends State<SubCategory> {
                 setState(() {});
               },
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             )
           ],
@@ -182,7 +186,7 @@ class _SubCategoryState extends State<SubCategory> {
                       filterdata = filterdata.reversed.toList();
                       return SingleChildScrollView(
                         child: ListView.builder(
-                          physics: NeverScrollableScrollPhysics(),
+                          physics: const NeverScrollableScrollPhysics(),
                           shrinkWrap: true,
                           itemCount: filterdata.length,
                           itemBuilder: (context, index) {
@@ -213,10 +217,10 @@ class _SubCategoryState extends State<SubCategory> {
                                 },
                                 child: Container(
                                   height: 150,
-                                  margin: EdgeInsets.symmetric(vertical: 8.0),
-                                  padding: EdgeInsets.all(8.0),
+                                  margin: const EdgeInsets.symmetric(vertical: 8.0),
+                                  padding: const EdgeInsets.all(8.0),
                                   decoration: BoxDecoration(
-                                    color: Color.fromARGB(255, 251, 251, 251),
+                                    color: const Color.fromARGB(255, 251, 251, 251),
                                     borderRadius: BorderRadius.circular(10),
                                   ),
                                   child: Row(
@@ -233,7 +237,7 @@ class _SubCategoryState extends State<SubCategory> {
                                                 ? FileImage(File(
                                                         products.imagePath!))
                                                     as ImageProvider<Object>
-                                                : AssetImage(
+                                                : const AssetImage(
                                                     'assets/placeholder_image.png'),
                                           ),
                                         ),
@@ -265,11 +269,11 @@ class _SubCategoryState extends State<SubCategory> {
                                                   itemBuilder:
                                                       (BuildContext context) =>
                                                           [
-                                                    PopupMenuItem<String>(
+                                                    const PopupMenuItem<String>(
                                                       value: 'edit',
                                                       child: Text('Edit'),
                                                     ),
-                                                    PopupMenuItem<String>(
+                                                    const PopupMenuItem<String>(
                                                       value: 'delete',
                                                       child: Text('Delete'),
                                                     ),
@@ -381,8 +385,8 @@ class _SubCategoryState extends State<SubCategory> {
                       )),
             );
           },
-          child: Icon(Icons.add),
-          shape: CircleBorder(),
+          child: const Icon(Icons.add),
+          shape: const CircleBorder(),
         ),
       ),
     );

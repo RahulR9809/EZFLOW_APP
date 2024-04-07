@@ -1,3 +1,5 @@
+// ignore_for_file: file_names, camel_case_types, prefer_final_fields, avoid_print, sized_box_for_whitespace, sort_child_properties_last, use_build_context_synchronously
+
 import 'dart:io';
 import 'package:firstproject/db/data_model.dart';
 import 'package:firstproject/db/db.dart';
@@ -10,7 +12,7 @@ class subcategoryEdit extends StatefulWidget {
 
 
 
-  subcategoryEdit({
+  const subcategoryEdit({super.key, 
     required this.product,
      
   });
@@ -62,15 +64,15 @@ _productCount = TextEditingController(text: widget.product.producount?.toString(
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Edit Subcategory'),
+        title: const Text('Edit Subcategory'),
       ),
       body: SingleChildScrollView(
         child: Column(
           children: [
-            SizedBox(
+            const SizedBox(
               height: 30,
             ),
-            Text(
+            const Text(
               'Add Products',
               style: TextStyle(fontSize: 30, fontWeight: FontWeight.w500),
             ),
@@ -97,7 +99,7 @@ _productCount = TextEditingController(text: widget.product.producount?.toString(
                             : Container(
                                 height: 100,
                                 width: 100,
-                                child: Icon(Icons.add_a_photo_sharp),
+                                child: const Icon(Icons.add_a_photo_sharp),
                               ),
                       ),
                     ),
@@ -105,7 +107,7 @@ _productCount = TextEditingController(text: widget.product.producount?.toString(
                 ),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             Padding(
@@ -120,7 +122,7 @@ _productCount = TextEditingController(text: widget.product.producount?.toString(
                         border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(20))),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
                   TextFormField(
@@ -131,7 +133,7 @@ _productCount = TextEditingController(text: widget.product.producount?.toString(
                         border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(20))),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
                   TextFormField(
@@ -141,7 +143,7 @@ _productCount = TextEditingController(text: widget.product.producount?.toString(
                         border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(20))),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
                      TextFormField(
@@ -163,7 +165,7 @@ _productCount = TextEditingController(text: widget.product.producount?.toString(
                 return null;
               }, 
             ),  
-              SizedBox(
+              const SizedBox(
                     height: 20,
                   ),
                   TextFormField(
@@ -174,7 +176,7 @@ _productCount = TextEditingController(text: widget.product.producount?.toString(
                         border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(20))),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
                   TextFormField(
@@ -185,16 +187,16 @@ _productCount = TextEditingController(text: widget.product.producount?.toString(
                         border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(20))),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
                   ElevatedButton(
                     onPressed: () async {
                       _updateProduct();
                     },
-                    child: Text(
+                    child: const Text(
                       'update',
-                      style: TextStyle(color: Colors.white),
+                      style: TextStyle(color: Colors.blue),
                     ),
                     style: ButtonStyle(
                       backgroundColor:
@@ -220,7 +222,7 @@ Future<void> _showCategoryDialog(BuildContext context) async {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text('Select Category'),
+          title: const Text('Select Category'),
           content: SingleChildScrollView(
             child: Column(
               children: _categories.map((category) {

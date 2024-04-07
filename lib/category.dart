@@ -1,3 +1,5 @@
+// ignore_for_file: non_constant_identifier_names, unused_element, use_build_context_synchronously, avoid_print, use_key_in_widget_constructors, prefer_const_literals_to_create_immutables, sort_child_properties_last
+
 import 'dart:io';
 
 import 'package:firstproject/SubCategory.dart';
@@ -11,6 +13,8 @@ import 'package:hive/hive.dart';
 ValueNotifier<List<AddModel>> AddListNotifier = ValueNotifier([]);
 
 class CategoryPage extends StatefulWidget {
+  const CategoryPage({super.key});
+
   @override
   State<CategoryPage> createState() => _CategoryPageState();
 }
@@ -66,9 +70,9 @@ class _CategoryPageState extends State<CategoryPage> {
       context: context,
       builder: ((BuildContext context) {
         return AlertDialog(
-          title: Center(child: Text('Confirm Deletion')),
-          content: Padding(
-            padding: const EdgeInsets.only(left: 30),
+          title: const Center(child: Text('Confirm Deletion')),
+          content: const Padding(
+            padding: EdgeInsets.only(left: 30),
             child: Text('Are you sure?'),
           ),
           actions: <Widget>[
@@ -80,7 +84,7 @@ class _CategoryPageState extends State<CategoryPage> {
                     onPressed: () {
                       Navigator.of(context).pop(); 
                     },
-                    child: Text('Cancel'),
+                    child: const Text('Cancel'),
                   ),
                   TextButton(
                     onPressed: () async {
@@ -88,7 +92,7 @@ class _CategoryPageState extends State<CategoryPage> {
                       Navigator.of(context).pop();
                       setState(() {});
                     },
-                    child: Text('Confirm'),
+                    child: const Text('Confirm'),
                   )
                 ],
               ),
@@ -102,6 +106,7 @@ class _CategoryPageState extends State<CategoryPage> {
 
 
 
+  @override
   Widget build(BuildContext context) {
     
     return Scaffold(
@@ -119,7 +124,7 @@ class _CategoryPageState extends State<CategoryPage> {
                      shadows: [
                        Shadow(
               color: Colors.black.withOpacity(0.3), 
-              offset: Offset(0, 2),
+              offset: const Offset(0, 2),
               blurRadius: 5, 
                        ),
                      ],
@@ -140,12 +145,12 @@ class _CategoryPageState extends State<CategoryPage> {
               decoration: InputDecoration(
                 hintText: 'Search...',
                 hintStyle:
-                    TextStyle(color: const Color.fromARGB(255, 21, 20, 20)),
+                    const TextStyle(color: Color.fromARGB(255, 21, 20, 20)),
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(20),
                 ),
               ),
-              style: TextStyle(color: const Color.fromARGB(255, 73, 71, 71)),
+              style: const TextStyle(color: Color.fromARGB(255, 73, 71, 71)),
               onChanged: (value) {
                 getAllModels(filter: value);
                 setState(() {});
@@ -237,17 +242,17 @@ class CategoryItem extends StatelessWidget {
                 top: 18.0,
                 right: 18.0,
                 child: PopupMenuButton<String>(
-                  child: Icon(
+                  child: const Icon(
                     Icons.more_vert_outlined,
                     color: Color.fromARGB(255, 255, 255, 255),
                     size: 20.0,
                   ),
                   itemBuilder: (BuildContext context) => [
-                    PopupMenuItem<String>(
+                    const PopupMenuItem<String>(
                       value: 'edit',
                       child: Text('Edit'),
                     ),
-                    PopupMenuItem<String>(
+                    const PopupMenuItem<String>(
                       value: 'delete',
                       child: Text('Delete'),
                     ),
@@ -281,7 +286,7 @@ class CategoryItem extends StatelessWidget {
                   Center(
                     child: Container(
                       width: MediaQuery.of(context).size.width,
-                      color: Color.fromARGB(70, 19, 18, 18),
+                      color: const Color.fromARGB(70, 19, 18, 18),
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Center(

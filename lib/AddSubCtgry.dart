@@ -1,3 +1,5 @@
+// ignore_for_file: file_names, prefer_const_literals_to_create_immutables
+
 import 'dart:io';
 
 import 'package:firstproject/SubCategory.dart';
@@ -25,7 +27,7 @@ class _AddCategoriesState extends State<AddCategories> {
   final _producCount = TextEditingController();
   File? _subImage;
   late String _selectedCategory;
-  List<String> _categories = [];
+  final List<String> _categories = [];
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
  List<Product> sellProducts = [];
  
@@ -45,6 +47,7 @@ class _AddCategoriesState extends State<AddCategories> {
         _selectedCategory = _categories as String ;
       });
     } catch (e) {
+      // ignore: avoid_print
       print('Error fetching categories: $e');
     }
   }
@@ -56,10 +59,10 @@ class _AddCategoriesState extends State<AddCategories> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            SizedBox(
+            const SizedBox(
               height: 30,
             ),
-            Text(
+            const Text(
               'Add Products',
               style: TextStyle(fontSize: 30, fontWeight: FontWeight.w500),
             ),
@@ -86,10 +89,11 @@ class _AddCategoriesState extends State<AddCategories> {
                                     _subImage!,
                                     fit: BoxFit.cover,
                                   )
+                                // ignore: sized_box_for_whitespace
                                 : Container(
                                     height: 100,
                                     width: 100,
-                                    child: Icon(Icons.add_a_photo_sharp),
+                                    child: const Icon(Icons.add_a_photo_sharp),
                                   ),
                           ),
                         ],
@@ -99,7 +103,7 @@ class _AddCategoriesState extends State<AddCategories> {
                 ),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             Padding(
@@ -125,7 +129,7 @@ class _AddCategoriesState extends State<AddCategories> {
                           return null;
                         },
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 20,
                       ),
                       TextFormField(
@@ -145,7 +149,7 @@ class _AddCategoriesState extends State<AddCategories> {
                           return null;
                         },
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 20,
                       ),
                       TextFormField(
@@ -164,7 +168,7 @@ class _AddCategoriesState extends State<AddCategories> {
                           return null;
                         },
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 20,
                       ),
                       TextFormField(
@@ -189,7 +193,7 @@ class _AddCategoriesState extends State<AddCategories> {
                           return null;
                         },
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 20,
                       ),
                       TextFormField(
@@ -206,7 +210,7 @@ class _AddCategoriesState extends State<AddCategories> {
                           return null;
                         },
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 20,
                       ),
                       TextFormField(
@@ -226,7 +230,7 @@ class _AddCategoriesState extends State<AddCategories> {
                           return null;
                         },
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 20,
                       ),
                       ElevatedButton(
@@ -234,7 +238,7 @@ class _AddCategoriesState extends State<AddCategories> {
                           if (_formKey.currentState?.validate() == true) {
                             if (_subImage == null) {
                               ScaffoldMessenger.of(context).showSnackBar(
-                                SnackBar(
+                                const SnackBar(
                                   content: Text(
                                     'Please add an image',
                                     style: TextStyle(color: Colors.red),
@@ -257,6 +261,7 @@ class _AddCategoriesState extends State<AddCategories> {
 
                               await Addproduct(newProduct);
                               Navigator.pushReplacement(
+                                // ignore: use_build_context_synchronously
                                 context,
                                 MaterialPageRoute(
                                   builder: (context) => SubCategory(
@@ -280,9 +285,11 @@ class _AddCategoriesState extends State<AddCategories> {
                             }
                           }
                         },
-                        child: Text(
+                        
+                        // ignore: sort_child_properties_last
+                        child: const Text(
                           'Save',
-                          style: TextStyle(color: Colors.white),
+                          style: TextStyle(color: Color.fromARGB(255, 255, 255, 255)),
                         ),
                         style: ButtonStyle(
                           backgroundColor:
@@ -309,7 +316,7 @@ Future<void> _showCategoryDialog(BuildContext context) async {
     context: context,
     builder: (BuildContext context) {
       return AlertDialog(
-        title: Text('Select Category'),
+        title: const Text('Select Category'),
         content: SingleChildScrollView(
           child: Column(
             children: _categories
@@ -347,6 +354,7 @@ Future<void> _showCategoryDialog(BuildContext context) async {
         });
       }
     } catch (e) {
+      // ignore: avoid_print
       print("Error picking image: $e");
     }
   }
@@ -356,6 +364,7 @@ Future<void> _showCategoryDialog(BuildContext context) async {
       final addModelBox = await Hive.openBox<AddModel>('category');
       return addModelBox.values.toList();
     } catch (e) {
+      // ignore: avoid_print
       print('Error fetching categories: $e');
       return []; 
   }

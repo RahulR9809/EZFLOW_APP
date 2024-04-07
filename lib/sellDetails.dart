@@ -1,3 +1,5 @@
+// ignore_for_file: file_names
+
 import 'package:firstproject/addReturn.dart';
 import 'package:flutter/material.dart';
 import 'package:firstproject/HomePage.dart';
@@ -34,13 +36,13 @@ class _SellDetailsState extends State<SellDetails> {
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.primaryContainer,
         leading: IconButton(
-          icon: Icon(Icons.arrow_back),
+          icon: const Icon(Icons.arrow_back),
           onPressed: () {
             Navigator.pushReplacement(
-                context, MaterialPageRoute(builder: (context) => HomePage()));
+                context, MaterialPageRoute(builder: (context) => const HomePage()));
           },
         ),
-        title: Text(
+        title: const Text(
           'Sell Details',
           style: TextStyle(
             fontSize: 25,
@@ -50,7 +52,7 @@ class _SellDetailsState extends State<SellDetails> {
         centerTitle: true,
         actions: [
           IconButton(
-            icon: Icon(Icons.calendar_today),
+            icon: const Icon(Icons.calendar_today),
             onPressed: () {
               _selectDate(context);
             },
@@ -118,9 +120,9 @@ class _SellDetailsState extends State<SellDetails> {
                           direction: DismissDirection.startToEnd,
                           background: Container(
                             alignment: Alignment.centerLeft,
-                            padding: EdgeInsets.only(left: 20.0),
+                            padding: const EdgeInsets.only(left: 20.0),
                             color: Colors.red,
-                            child: Icon(
+                            child: const Icon(
                               Icons.delete,
                               color: Colors.white,
                             ),
@@ -130,19 +132,19 @@ class _SellDetailsState extends State<SellDetails> {
                               context: context,
                               builder: (BuildContext context) {
                                 return AlertDialog(
-                                  title: Text("Confirm"),
-                                  content: Text(
+                                  title: const Text("Confirm"),
+                                  content: const Text(
                                       "Are you sure you want to delete this sell entry?"),
                                   actions: <Widget>[
                                     TextButton(
                                       onPressed: () =>
                                           Navigator.of(context).pop(false),
-                                      child: Text("CANCEL"),
+                                      child: const Text("CANCEL"),
                                     ),
                                     TextButton(
                                       onPressed: () =>
                                           Navigator.of(context).pop(true),
-                                      child: Text("DELETE"),
+                                      child: const Text("DELETE"),
                                     ),
                                   ],
                                 );
@@ -156,8 +158,8 @@ class _SellDetailsState extends State<SellDetails> {
                             });
                           },
                           child: Container(
-                            margin: EdgeInsets.all(10),
-                            padding: EdgeInsets.all(10),
+                            margin: const EdgeInsets.all(10),
+                            padding: const EdgeInsets.all(10),
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(10),
                               color: Colors.black,
@@ -166,7 +168,7 @@ class _SellDetailsState extends State<SellDetails> {
                                   color: Colors.grey.withOpacity(0.5),
                                   spreadRadius: 2,
                                   blurRadius: 5,
-                                  offset: Offset(0, 3),
+                                  offset: const Offset(0, 3),
                                 ),
                               ],
                             ),
@@ -194,7 +196,7 @@ class _SellDetailsState extends State<SellDetails> {
                                                     'dd/MM/yyyy \n hh:mm:ss a')
                                                 .format(sellProduct.sellDate!)
                                             : 'N/A',
-                                        style: TextStyle(
+                                        style: const TextStyle(
                                           fontWeight: FontWeight.bold,
                                           color: Colors.white,
                                           fontSize: 18,
@@ -203,20 +205,20 @@ class _SellDetailsState extends State<SellDetails> {
                                     ],
                                   ),
                                 ),
-                                Divider(color: Colors.white),
+                                const Divider(color: Colors.white),
                                 ListTile(
-                                  contentPadding: EdgeInsets.symmetric(
+                                  contentPadding: const EdgeInsets.symmetric(
                                       horizontal: 10, vertical: 5),
                                   title: Row(
                                     children: [
-                                      Icon(
+                                      const Icon(
                                         Icons.person_outline_rounded,
                                         color: Colors.white,
                                         size: 28,
                                       ),
-                                      SizedBox(width: 15),
+                                      const SizedBox(width: 15),
                                       Text(sellProduct.sellName,
-                                          style: TextStyle(
+                                          style: const TextStyle(
                                             fontWeight: FontWeight.bold,
                                             color: Colors.white,
                                             fontSize: 18,
@@ -225,15 +227,15 @@ class _SellDetailsState extends State<SellDetails> {
                                   ),
                                   subtitle: Row(
                                     children: [
-                                      Icon(
+                                      const Icon(
                                         Icons.call_outlined,
                                         color: Colors.white,
                                         size: 28,
                                       ),
-                                      SizedBox(width: 15),
+                                      const SizedBox(width: 15),
                                       Text(
                                         sellProduct.sellPhone,
-                                        style: TextStyle(
+                                        style: const TextStyle(
                                           fontWeight: FontWeight.bold,
                                           color: Colors.white,
                                           fontSize: 18,
@@ -242,9 +244,9 @@ class _SellDetailsState extends State<SellDetails> {
                                     ],
                                   ),
                                 ),
-                                Divider(color: Colors.white),
-                                Padding(
-                                  padding: const EdgeInsets.symmetric(
+                                const Divider(color: Colors.white),
+                                const Padding(
+                                  padding: EdgeInsets.symmetric(
                                       vertical: 10, horizontal: 5),
                                   child: Row(
                                     children: [
@@ -260,9 +262,9 @@ class _SellDetailsState extends State<SellDetails> {
                                     ],
                                   ),
                                 ),
-                                Divider(color: Colors.white),
+                                const Divider(color: Colors.white),
                                 ListTile(
-                                  contentPadding: EdgeInsets.symmetric(
+                                  contentPadding: const EdgeInsets.symmetric(
                                       horizontal: 10, vertical: 5),
                                   title: Column(
                                     crossAxisAlignment:
@@ -309,7 +311,7 @@ class _SellDetailsState extends State<SellDetails> {
                                               children: [
                                                 Text(
                                                   '$productName * $productCount = ₹${productPrice * productCount}',
-                                                  style: TextStyle(
+                                                  style: const TextStyle(
                                                     fontWeight:
                                                         FontWeight.bold,
                                                     fontSize: 18,
@@ -330,7 +332,7 @@ class _SellDetailsState extends State<SellDetails> {
                                         mainAxisAlignment:
                                             MainAxisAlignment.spaceBetween,
                                         children: [
-                                          Text(
+                                          const Text(
                                             'Discount',
                                             style: TextStyle(
                                               fontWeight: FontWeight.bold,
@@ -340,7 +342,7 @@ class _SellDetailsState extends State<SellDetails> {
                                           ),
                                           Text(
                                             '₹${sellProduct.sellDiscount}',
-                                            style: TextStyle(
+                                            style: const TextStyle(
                                               fontWeight: FontWeight.bold,
                                               color: Colors.white,
                                               fontSize: 18,
@@ -352,7 +354,7 @@ class _SellDetailsState extends State<SellDetails> {
                                         mainAxisAlignment:
                                             MainAxisAlignment.spaceBetween,
                                         children: [
-                                          Text(
+                                          const Text(
                                             'Total Price:',
                                             style: TextStyle(
                                               fontWeight: FontWeight.bold,
@@ -362,7 +364,7 @@ class _SellDetailsState extends State<SellDetails> {
                                           ),
                                           Text(
                                             '₹${sellProduct.sellPrice}',
-                                            style: TextStyle(
+                                            style: const TextStyle(
                                               fontWeight: FontWeight.bold,
                                               color: Colors.white,
                                               fontSize: 18,
@@ -373,7 +375,7 @@ class _SellDetailsState extends State<SellDetails> {
                                     ],
                                   ),
                                 ),
-                                SizedBox(height: 10),
+                                const SizedBox(height: 10),
                                 Center(
                                   child: ElevatedButton(
                                     onPressed: () {
@@ -389,15 +391,15 @@ class _SellDetailsState extends State<SellDetails> {
                                     style: ElevatedButton.styleFrom(
                                       elevation: 5,
                                       backgroundColor:
-                                          Color.fromARGB(255, 51, 52, 111),
+                                          const Color.fromARGB(255, 51, 52, 111),
                                       shape: RoundedRectangleBorder(
                                         borderRadius: BorderRadius.circular(20),
                                       ),
                                     ),
                                     child: Container(
-                                      padding: EdgeInsets.symmetric(
+                                      padding: const EdgeInsets.symmetric(
                                           vertical: 2, horizontal: 3),
-                                      child: Text(
+                                      child: const Text(
                                         'Return Product',
                                         style: TextStyle(
                                             fontSize: 16,
